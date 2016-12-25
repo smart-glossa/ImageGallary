@@ -12,23 +12,23 @@ $(document).on('click', '#signup', function() {
         $("#name").focus().css("outline-color", "#ff0000");
         return;
       }
-      if (uName === ""){
+      if (uName === "") {
         $("#uName").focus().css("outline-color", "#ff0000");
         return;
       }
-      if (pass === ""){
+      if (pass === "") {
         $("#pass").focus().css("outline-color", "#ff0000");
         return;
       }
-      if (add === ""){
+      if (add === "") {
         $("#address").focus().css("outline-color", "#ff0000");
         return;
       }
-      if (age === ""){
+      if (age === "") {
         $("#age").focus().css("outline-color", "#ff0000");
         return;
       }
-      if (mobileNo === ""){
+      if (mobileNo === "") {
         $("#mobileNumber").focus().css("outline-color", "#ff0000");
         return;
       }
@@ -36,41 +36,60 @@ $(document).on('click', '#signup', function() {
       var request = new FormData();
       request.append('file', $('#profile')[0].files[0]);
       $.ajax({
-          url: url,
-          type: 'POST',
-          data: request,
-          processData: false,
-          contentType: false
-        }.done(function(result) {
-          var res = JSON.parse(result);
-          if (res.status == "1") {
-            alert("Added Successfully").fadeout(5000);
-          }
-        }).fail(function(result) {
-          var res = JSON.parse(result);
-          if (res.status == "0") {
-            alert("Error occurs").fadeout(5000);
-          }
-        })
-      }); $(document).on('click', '#login', function() {
-      var user = $('#user').val();
-      var passw = $('#passw').val();
-      if (user == "") {
-        $("#user").focus().css("outline-color", "#ff0000");
-        return;
-      }
-      if (passw == "") {
-        $("#passw").focus().css("outline-color", "ff0000");
-        return;
-      }
-      var url = "/bill/bill?operation=login&user=" +
-        user + "&passw=" + passw;
-      $.ajax({
-        url: url,
-        type: 'POST'
-      }).done(function(result){
+            url: url,
+            type: 'POST',
+            data: request,
+            processData: false,
+            contentType: false
+          }.done(function(result) {
+            var res = JSON.parse(result);
+            if (res.status == "1") {
+              alert("Added Successfully").fadeout(5000);
+            }
+          }).fail(function(result) {
+            var res = JSON.parse(result);
+            if (res.status == "0") {
+              alert("Error occurs").fadeout(5000);
+            }
 
-      }).fail(function(result){
-        
-      })
-    })
+          }); $(document).on('click', '#login', function() {
+            var user = $('#user').val();
+            var passw = $('#passw').val();
+            if (user == "") {
+              $("#user").focus().css("outline-color", "#ff0000");
+              return;
+            }
+            if (passw == "") {
+              $("#passw").focus().css("outline-color", "ff0000");
+              return;
+            }
+            var url = "/bill/bill?operation=login&user=" +
+              user + "&passw=" + passw;
+            $.ajax({
+              url: url,
+              type: 'POST'
+            }).done(function(result) {
+              var res = JSON.parse(result);
+              if (res.status == "1") {
+                document.cookie = "uname=" + user;
+              }
+
+            }).fail(function(result) {
+
+            })
+          });
+
+          function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return undefined;
+          }
