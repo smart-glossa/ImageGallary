@@ -10,7 +10,7 @@
     </servlet>
     <servlet-mapping>
     	<servlet-name>ImageGallary</servlet-name>
-    	<url-pattern>/ImageGallary</url-pattern>
+    	<url-pattern>/gallery</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
