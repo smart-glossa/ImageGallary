@@ -76,9 +76,14 @@ $(document).on('click', '#signup', function() {
               var res = JSON.parse(result);
               if (res.status == "1") {
                 document.cookie = "uname=" + user;
+                window.location.href = "home.html";
               }
 
             }).fail(function(result) {
+              var res = JSON.parse(result)
+              if (res.status == "0") {
+                alert("Error").fadeout(5000);
+              }
 
             })
           });
