@@ -22,11 +22,11 @@ public class GallaryClass {
 	 public void addUser(String name, String uName, String pass,String address,String age, String mobNo,FileItem file)
 	            throws SQLException, ClassNotFoundException, IOException {
 	        try {
-	            String query = "Insert into product(name,uName,password,address,age,mobileNumber) values('" + name + "', '" + uName + "', '" + pass + "','" +address+ "','"+ age +"','"+ mobNo +"')";
+	            String query = "Insert into user(name,uName,password,address,age,mobileNumber) values('" + name + "', '" + uName + "', '" + pass + "','" +address+ "','"+ age +"','"+ mobNo +"')";
 	            stmt.execute(query);
 
-	            ps = conn.prepareStatement("insert into productImage(pimage,pid) values(?,?)");
-	            ps.setInt(2, uName);
+	            ps = conn.prepareStatement("insert into image(pimage,uName) values(?,?)");
+	            ps.setString(2, uName);
 	            // size must be converted to int otherwise it results in error
 	            ps.setBinaryStream(1, file.getInputStream(), (int) file.getSize());
 	            ps.executeUpdate();
