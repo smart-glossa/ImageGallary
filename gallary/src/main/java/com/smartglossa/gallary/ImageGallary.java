@@ -1,6 +1,7 @@
 package com.smartglossa.gallary;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -45,6 +46,21 @@ public class ImageGallary extends HttpServlet {
 				e.printStackTrace();
 				obj.put("status", 0);
 				obj.put("message", e.getMessage());
+			}
+			response.getWriter().print(obj);
+		} else if (op.equals("getAllImages")) {
+
+		} else if (op.equals("login")) {
+			String uname = request.getParameter("user");
+			String pass = request.getParameter("passw");
+			JSONObject obj = new JSONObject();
+			try {
+				GallaryClass gall = new GallaryClass();
+				gall.login(uname, pass);
+				obj.put("status", "1");
+			} catch (Exception e) {
+				obj.put("status", "0");
+				e.printStackTrace();
 			}
 			response.getWriter().print(obj);
 		}
