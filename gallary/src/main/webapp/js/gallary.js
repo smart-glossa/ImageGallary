@@ -1,5 +1,9 @@
 $(document).ready(function() {
-
+  if (getCookie("uname") != undefined) {
+    window.location.href = "index.html";
+  } else {
+    window.location.href = "home.html";
+  }
 });
 $(document).on('click', '#signup', function() {
       var name = $('#name').val();
@@ -52,7 +56,7 @@ $(document).on('click', '#signup', function() {
               alert("Error occurs").fadeout(5000);
             }
 
-          }); $(document).on('click', '#login', function() {
+          }) $(document).on('click', '#login', function() {
             var user = $('#user').val();
             var passw = $('#passw').val();
             if (user == "") {

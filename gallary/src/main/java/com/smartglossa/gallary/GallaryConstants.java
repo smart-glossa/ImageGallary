@@ -1,9 +1,9 @@
 package com.smartglossa.gallary;
 
 public class GallaryConstants {
-	final static String MYSQL_SERVER = System.getProperty("gallary.mysql");
-	final static String USERNAME = System.getProperty("gallary.username");
-	final static String PASSWORD = System.getProperty("gallary.password");
-	final static String DATABASE = System.getProperty("gallary.database");
+	final static String MYSQL_SERVER = System.getProperty("gallery.mysql");
+	final static String USERNAME = System.getProperty("gallery.username");
+	final static String PASSWORD = System.getProperty("gallery.password");
+	final static String DATABASE = System.getProperty("gallery.database");
 
 }
