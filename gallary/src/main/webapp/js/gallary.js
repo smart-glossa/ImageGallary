@@ -45,7 +45,7 @@ $(document).on('click', '#signup', function() {
             data: request,
             processData: false,
             contentType: false
-          }.done(function(result) {
+          }).done(function(result) {
             var res = JSON.parse(result);
             if (res.status == "1") {
               alert("Added Successfully").fadeout(5000);
@@ -56,7 +56,9 @@ $(document).on('click', '#signup', function() {
               alert("Error occurs").fadeout(5000);
             }
 
-          }) $(document).on('click', '#login', function() {
+          })
+		});
+          $(document).on('click', '#login', function() {
             var user = $('#user').val();
             var passw = $('#passw').val();
             if (user == "") {
